@@ -1,0 +1,20 @@
+# Lista de programas que contam como "jogar".
+# Um nome de executável por linha (maiúsculas/minúsculas tanto faz).
+# Linhas começando com # são ignoradas.
+#
+# Dica: para descobrir o nome do .exe de um jogo, abra o Gerenciador de Tarefas,
+# clique com o botão direito no jogo > "Ir para detalhes".
+
+# Launchers
+steam.exe
+epicgameslauncher.exe
+riotclientservices.exe
+battle.net.exe
+blacksmithim.exe
+
+# Jogos (exemplos, adicione os seus)
+cs2.exe
+valorant.exe
+leagueclient.exe
+fortniteclient-win64-shipping.exe
+minecraft.exe
