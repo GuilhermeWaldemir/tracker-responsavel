@@ -1,0 +1,10 @@
+# Saída do build
+target/
+
+# Banco de dados local
+*.db
+
+# IDEs
+.idea/
+*.iml
+.vscode/
