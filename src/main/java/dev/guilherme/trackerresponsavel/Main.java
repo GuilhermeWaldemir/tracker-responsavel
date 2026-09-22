@@ -1,14 +1,14 @@
-package dev.guilherme.antivagabundo;
+package dev.guilherme.trackerresponsavel;
 
-import dev.guilherme.antivagabundo.games.GameList;
-import dev.guilherme.antivagabundo.games.ProcessMonitor;
-import dev.guilherme.antivagabundo.startup.SingleInstanceLock;
-import dev.guilherme.antivagabundo.startup.WindowsStartup;
-import dev.guilherme.antivagabundo.storage.SessionRepository;
-import dev.guilherme.antivagabundo.tracking.PlayTimeTracker;
-import dev.guilherme.antivagabundo.tracking.Week;
-import dev.guilherme.antivagabundo.ui.TrayIcon;
-import dev.guilherme.antivagabundo.ui.WarningDialog;
+import dev.guilherme.trackerresponsavel.games.GameList;
+import dev.guilherme.trackerresponsavel.games.ProcessMonitor;
+import dev.guilherme.trackerresponsavel.startup.SingleInstanceLock;
+import dev.guilherme.trackerresponsavel.startup.WindowsStartup;
+import dev.guilherme.trackerresponsavel.storage.SessionRepository;
+import dev.guilherme.trackerresponsavel.tracking.PlayTimeTracker;
+import dev.guilherme.trackerresponsavel.tracking.Week;
+import dev.guilherme.trackerresponsavel.ui.TrayIcon;
+import dev.guilherme.trackerresponsavel.ui.WarningDialog;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -56,14 +56,14 @@ public final class Main {
         }
 
         Path dataDir = Path.of(System.getenv().getOrDefault("APPDATA", System.getProperty("user.home")),
-                "TrackerAntiVagabundo");
+                "TrackerResponsavel");
         Files.createDirectories(dataDir);
 
         Optional<SingleInstanceLock> lock = SingleInstanceLock.tryAcquire(dataDir.resolve("tracker.lock"));
         if (lock.isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "O Tracker Anti-Vagabundo já está rodando.\nProcure o ícone perto do relógio.",
-                    "Tracker Anti-Vagabundo", JOptionPane.INFORMATION_MESSAGE);
+                    "O Tracker Responsável já está rodando.\nProcure o ícone perto do relógio.",
+                    "Tracker Responsável", JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
         }
 

@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.storage;
+package dev.guilherme.trackerresponsavel.storage;
 
 import java.nio.file.Path;
 import java.sql.Connection;

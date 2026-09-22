@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.startup;
+package dev.guilherme.trackerresponsavel.startup;
 
 import java.io.IOException;
 import java.nio.channels.FileChannel;

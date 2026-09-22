@@ -1,6 +1,6 @@
-package dev.guilherme.antivagabundo.tracking;
+package dev.guilherme.trackerresponsavel.tracking;
 
-import dev.guilherme.antivagabundo.storage.SessionRepository;
+import dev.guilherme.trackerresponsavel.storage.SessionRepository;
 
 import java.sql.SQLException;
 import java.time.Duration;

@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.games;
+package dev.guilherme.trackerresponsavel.games;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.games;
+package dev.guilherme.trackerresponsavel.games;
 
 import java.nio.file.Path;
 import java.util.HashSet;

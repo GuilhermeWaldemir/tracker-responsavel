@@ -1,9 +1,9 @@
-# Tracker Anti-Vagabundo
+# Tracker Responsável
 
 App para Windows que fica rodando em segundo plano e, toda vez que você abre um jogo ou launcher (Steam, Epic Games...), pergunta se você já terminou suas responsabilidades — mostrando quantas horas você já jogou na semana.
 
 ```
-┌───────────────────────── Tracker Anti-Vagabundo ─────────────────────────┐
+┌─────────────────────────── Tracker Responsável ───────────────────────────┐
 │  Você abriu steam.exe.                                                    │
 │  Nesta semana você já jogou 7h 45min.                                     │
 │  Já terminou todas as suas responsabilidades? Vai jogar mesmo?            │
@@ -28,20 +28,20 @@ Requisito: **Java 21+**. Não é preciso instalar o Maven — o projeto usa o Ma
 
 ```powershell
 .\mvnw.cmd package                      # compila e roda os testes
-javaw -jar target\tracker-anti-vagabundo.jar
+javaw -jar target\tracker-responsavel.jar
 ```
 
 (`javaw` roda sem abrir janela de terminal; use `java` para ver os logs.)
 
 ### Iniciar com o Windows
 
-Clique com o botão direito no ícone da bandeja e marque **Iniciar com o Windows**. O app copia o `.jar` para `%APPDATA%\TrackerAntiVagabundo\` e se registra em `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` (não precisa de administrador). Desmarque para remover.
+Clique com o botão direito no ícone da bandeja e marque **Iniciar com o Windows**. O app copia o `.jar` para `%APPDATA%\TrackerResponsavel\` e se registra em `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` (não precisa de administrador). Desmarque para remover.
 
 A opção só aparece habilitada quando o app roda a partir do `.jar`. Depois de gerar uma versão nova, desmarque e marque de novo para atualizar a cópia instalada.
 
 ## Configurando os jogos
 
-Na primeira execução é criado o arquivo `%APPDATA%\TrackerAntiVagabundo\jogos.txt` com uma lista padrão. Adicione um executável por linha:
+Na primeira execução é criado o arquivo `%APPDATA%\TrackerResponsavel\jogos.txt` com uma lista padrão. Adicione um executável por linha:
 
 ```
 steam.exe
@@ -51,7 +51,7 @@ cs2.exe
 
 Para descobrir o nome do executável de um jogo: Gerenciador de Tarefas → botão direito no jogo → **Ir para detalhes**. Reinicie o app depois de editar.
 
-Os dados ficam em `%APPDATA%\TrackerAntiVagabundo\tracker.db`.
+Os dados ficam em `%APPDATA%\TrackerResponsavel\tracker.db`.
 
 ## Como funciona
 

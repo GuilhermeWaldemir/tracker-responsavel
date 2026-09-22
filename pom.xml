@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.guilherme</groupId>
-    <artifactId>tracker-anti-vagabundo</artifactId>
+    <artifactId>tracker-responsavel</artifactId>
     <version>0.1.0</version>
-    <name>Tracker Anti-Vagabundo</name>
+    <name>Tracker Responsável</name>
     <description>Monitora quanto tempo você joga na semana e pergunta se as responsabilidades estão em dia.</description>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class>dev.guilherme.antivagabundo.Main</main.class>
+        <main.class>dev.guilherme.trackerresponsavel.Main</main.class>
     </properties>
 
     <dependencies>
@@ -51,7 +51,7 @@
             </plugin>
 
             <!-- Gera um único .jar com todas as dependências dentro ("fat jar"),
-                 para rodar com: java -jar target/tracker-anti-vagabundo.jar -->
+                 para rodar com: java -jar target/tracker-responsavel.jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -63,7 +63,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>tracker-anti-vagabundo</finalName>
+                            <finalName>tracker-responsavel</finalName>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">

@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.startup;
+package dev.guilherme.trackerresponsavel.startup;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;

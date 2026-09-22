@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.startup;
+package dev.guilherme.trackerresponsavel.startup;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,12 +19,12 @@ import java.util.Optional;
 public final class WindowsStartup {
 
     private static final String RUN_KEY = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
-    private static final String VALUE_NAME = "TrackerAntiVagabundo";
+    private static final String VALUE_NAME = "TrackerResponsavel";
 
     private final Path installedJar;
 
     public WindowsStartup(Path dataDir) {
-        this.installedJar = dataDir.resolve("tracker-anti-vagabundo.jar");
+        this.installedJar = dataDir.resolve("tracker-responsavel.jar");
     }
 
     /** Só dá para ativar rodando a partir do .jar (pela IDE o app roda de uma pasta de classes). */
@@ -60,7 +60,7 @@ public final class WindowsStartup {
         }
     }
 
-    /** Ex.: "C:\Program Files\Java\bin\javaw.exe" -jar "C:\Users\...\tracker-anti-vagabundo.jar" */
+    /** Ex.: "C:\Program Files\Java\bin\javaw.exe" -jar "C:\Users\...\tracker-responsavel.jar" */
     static String startupCommand(Path javaw, Path jar) {
         return "\"" + javaw + "\" -jar \"" + jar + "\"";
     }

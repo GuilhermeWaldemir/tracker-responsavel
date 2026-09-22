@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.startup;
+package dev.guilherme.trackerresponsavel.startup;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,10 +12,10 @@ class WindowsStartupTest {
     void quotesPathsSoSpacesDoNotBreakTheCommand() {
         String command = WindowsStartup.startupCommand(
                 Path.of("C:\\Program Files\\Java\\bin\\javaw.exe"),
-                Path.of("C:\\Users\\Guilh\\AppData\\Roaming\\TrackerAntiVagabundo\\tracker-anti-vagabundo.jar"));
+                Path.of("C:\\Users\\Guilh\\AppData\\Roaming\\TrackerResponsavel\\tracker-responsavel.jar"));
 
         assertEquals("\"C:\\Program Files\\Java\\bin\\javaw.exe\" -jar "
-                        + "\"C:\\Users\\Guilh\\AppData\\Roaming\\TrackerAntiVagabundo\\tracker-anti-vagabundo.jar\"",
+                        + "\"C:\\Users\\Guilh\\AppData\\Roaming\\TrackerResponsavel\\tracker-responsavel.jar\"",
                 command);
     }
 }

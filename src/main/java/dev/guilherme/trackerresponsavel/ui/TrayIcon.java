@@ -1,6 +1,6 @@
-package dev.guilherme.antivagabundo.ui;
+package dev.guilherme.trackerresponsavel.ui;
 
-import dev.guilherme.antivagabundo.startup.WindowsStartup;
+import dev.guilherme.trackerresponsavel.startup.WindowsStartup;
 
 import javax.swing.JOptionPane;
 import java.awt.AWTException;
@@ -33,7 +33,7 @@ public final class TrayIcon {
         menu.add(startupItem(startup));
         menu.add(exitItem);
 
-        icon = new java.awt.TrayIcon(drawIcon(), "Tracker Anti-Vagabundo", menu);
+        icon = new java.awt.TrayIcon(drawIcon(), "Tracker Responsável", menu);
         icon.setImageAutoSize(true);
         SystemTray.getSystemTray().add(icon);
     }
@@ -41,7 +41,7 @@ public final class TrayIcon {
     public void showPlayedThisWeek(String played) {
         EventQueue.invokeLater(() -> {
             hoursItem.setLabel("Esta semana: " + played);
-            icon.setToolTip("Tracker Anti-Vagabundo\nEsta semana: " + played);
+            icon.setToolTip("Tracker Responsável\nEsta semana: " + played);
         });
     }
 
@@ -74,7 +74,7 @@ public final class TrayIcon {
             } catch (Exception e) {
                 item.setState(!enable); // desfaz a marcação, já que não funcionou
                 JOptionPane.showMessageDialog(null, e.getMessage(),
-                        "Tracker Anti-Vagabundo", JOptionPane.ERROR_MESSAGE);
+                        "Tracker Responsável", JOptionPane.ERROR_MESSAGE);
             }
         });
         return item;

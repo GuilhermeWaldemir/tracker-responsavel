@@ -1,4 +1,4 @@
-package dev.guilherme.antivagabundo.ui;
+package dev.guilherme.trackerresponsavel.ui;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -47,7 +47,7 @@ public final class WarningDialog {
         Object[] options = {PLAY, CLOSE};
         JOptionPane pane = new JOptionPane(message, JOptionPane.QUESTION_MESSAGE,
                 JOptionPane.DEFAULT_OPTION, null, options, CLOSE);
-        JDialog dialog = pane.createDialog("Tracker Anti-Vagabundo");
+        JDialog dialog = pane.createDialog("Tracker Responsável");
         dialog.setAlwaysOnTop(true); // aparece por cima do launcher
         dialog.setVisible(true);     // bloqueia até o usuário responder
         dialog.dispose();

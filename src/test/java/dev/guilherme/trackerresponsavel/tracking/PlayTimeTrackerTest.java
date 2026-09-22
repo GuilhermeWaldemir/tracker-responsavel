@@ -1,6 +1,6 @@
-package dev.guilherme.antivagabundo.tracking;
+package dev.guilherme.trackerresponsavel.tracking;
 
-import dev.guilherme.antivagabundo.storage.SessionRepository;
+import dev.guilherme.trackerresponsavel.storage.SessionRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
