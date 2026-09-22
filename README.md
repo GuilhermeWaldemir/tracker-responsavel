@@ -19,6 +19,7 @@ App para Windows que fica rodando em segundo plano e, toda vez que você abre um
 - Conta o tempo jogado (semana de segunda a domingo) e salva em um banco SQLite local.
 - Ícone na bandeja do sistema com o total da semana e a opção de sair.
 - Opção de iniciar junto com o Windows.
+- Só uma cópia do app roda por vez (evita avisos duplicados).
 - Não conta tempo em dobro com vários jogos abertos, nem o tempo em que o PC ficou em suspensão.
 
 ## Como rodar
@@ -72,13 +73,14 @@ ProcessMonitor ──► quais jogos estão abertos? quais acabaram de abrir?
 | `tracking` | Regras de sessão e cálculo da semana |
 | `storage` | Persistência em SQLite via JDBC |
 | `ui` | Janela de aviso (Swing) e ícone na bandeja (AWT) |
-| `startup` | Inicialização com o Windows via Registro (`reg.exe`) |
+| `startup` | Inicialização com o Windows via Registro (`reg.exe`) e trava de instância única |
 
 Algumas decisões:
 
 - **A sessão é gravada a cada verificação**, não só ao fechar o jogo: se o PC desligar de repente, perde-se no máximo 5 segundos.
 - **O tempo conta enquanto *qualquer* jogo estiver aberto**, então Steam + jogo abertos juntos não dobram as horas.
 - **Intervalos maiores que 1 minuto entre verificações** (PC em suspensão) não são contados.
+- **Instância única com `FileLock`** em vez de porta de rede: a trava é do sistema operacional, então é liberada até se o app travar, e não conflita com outros programas.
 - **A leitura de processos é injetada** (`Supplier<Set<String>>`) no `ProcessMonitor`, o que permite testá-lo sem abrir jogos de verdade.
 
 ## Testes
@@ -96,6 +98,6 @@ Java 21 · Swing/AWT · SQLite (sqlite-jdbc) · Maven · JUnit 5
 ## Próximos passos
 
 - [x] Iniciar junto com o Windows
-- [ ] Impedir que duas cópias do app rodem ao mesmo tempo
+- [x] Impedir que duas cópias do app rodem ao mesmo tempo
 - [ ] Meta semanal de horas com aviso ao ultrapassar
 - [ ] Histórico por semana e por jogo

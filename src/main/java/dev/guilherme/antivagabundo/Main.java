@@ -2,6 +2,7 @@ package dev.guilherme.antivagabundo;
 
 import dev.guilherme.antivagabundo.games.GameList;
 import dev.guilherme.antivagabundo.games.ProcessMonitor;
+import dev.guilherme.antivagabundo.startup.SingleInstanceLock;
 import dev.guilherme.antivagabundo.startup.WindowsStartup;
 import dev.guilherme.antivagabundo.storage.SessionRepository;
 import dev.guilherme.antivagabundo.tracking.PlayTimeTracker;
@@ -9,6 +10,7 @@ import dev.guilherme.antivagabundo.tracking.Week;
 import dev.guilherme.antivagabundo.ui.TrayIcon;
 import dev.guilherme.antivagabundo.ui.WarningDialog;
 
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.awt.SystemTray;
 import java.nio.file.Files;
@@ -17,6 +19,7 @@ import java.sql.SQLException;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -32,10 +35,12 @@ public final class Main {
     private final PlayTimeTracker tracker;
     private final WarningDialog warning = new WarningDialog();
     private final TrayIcon tray;
+    private final SingleInstanceLock instanceLock;
     // Uma única thread faz as verificações e é a única que usa o banco.
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
 
-    private Main(Path dataDir) throws Exception {
+    private Main(Path dataDir, SingleInstanceLock instanceLock) throws Exception {
+        this.instanceLock = instanceLock;
         GameList games = GameList.loadOrCreate(dataDir.resolve("jogos.txt"));
         monitor = new ProcessMonitor(games, ProcessMonitor::systemProcessNames);
         repository = new SessionRepository(dataDir.resolve("tracker.db"));
@@ -54,7 +59,15 @@ public final class Main {
                 "TrackerAntiVagabundo");
         Files.createDirectories(dataDir);
 
-        new Main(dataDir).start();
+        Optional<SingleInstanceLock> lock = SingleInstanceLock.tryAcquire(dataDir.resolve("tracker.lock"));
+        if (lock.isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "O Tracker Anti-Vagabundo já está rodando.\nProcure o ícone perto do relógio.",
+                    "Tracker Anti-Vagabundo", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        new Main(dataDir, lock.get()).start();
     }
 
     private void start() {
@@ -93,6 +106,7 @@ public final class Main {
         try {
             scheduler.awaitTermination(5, TimeUnit.SECONDS);
             repository.close();
+            instanceLock.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
