@@ -34,15 +34,25 @@ public final class WarningDialog {
         });
     }
 
+    /**
+     * Texto do aviso, em <b>uma linha só</b>.
+     *
+     * <p>O {@link JOptionPane} quebra a mensagem em um rótulo por linha. Com quebras de linha no
+     * meio, só o primeiro pedaço seria tratado como HTML e os outros apareceriam com as tags à
+     * mostra ({@code <b>}, {@code <br>}). Por isso as quebras são feitas com {@code <br>}.
+     */
+    static String message(String game, String playedThisWeek) {
+        return ("<html>"
+                + "Você abriu <b>%s</b>.<br><br>"
+                + "Nesta semana você já jogou <b>%s</b>.<br><br>"
+                + "Já terminou <b>todas</b> as suas responsabilidades?<br>"
+                + "Vai jogar mesmo?"
+                + "</html>").formatted(game, playedThisWeek);
+    }
+
     /** Devolve true se o usuário escolheu fechar o jogo. */
     private boolean ask(String game, String playedThisWeek) {
-        String message = """
-                <html>
-                Você abriu <b>%s</b>.<br><br>
-                Nesta semana você já jogou <b>%s</b>.<br><br>
-                Já terminou <b>todas</b> as suas responsabilidades?<br>
-                Vai jogar mesmo?
-                </html>""".formatted(game, playedThisWeek);
+        String message = message(game, playedThisWeek);
 
         Object[] options = {PLAY, CLOSE};
         JOptionPane pane = new JOptionPane(message, JOptionPane.QUESTION_MESSAGE,
