@@ -1,5 +1,7 @@
 # Tracker Responsável
 
+[![Testes](https://github.com/GuilhermeWaldemir/tracker-responsavel/actions/workflows/testes.yml/badge.svg)](https://github.com/GuilhermeWaldemir/tracker-responsavel/actions/workflows/testes.yml)
+
 App para Windows que fica rodando em segundo plano e, toda vez que você abre um jogo ou launcher (Steam, Epic Games...), pergunta se você já terminou suas responsabilidades — mostrando quantas horas você já jogou na semana.
 
 ```
@@ -90,6 +92,8 @@ Algumas decisões:
 ```
 
 Testes com JUnit 5 cobrem a leitura da lista de jogos, a detecção de jogos abertos, as regras de sessão (incluindo suspensão do PC) e a soma de horas na semana (incluindo sessões que atravessam a virada da semana).
+
+São 19 testes em 7 classes. Eles também rodam sozinhos no GitHub Actions (em `windows-latest`, o mesmo sistema do app) a cada envio de código e a cada pull request — é o resultado que aparece no selo no topo deste arquivo.
 
 ## Tecnologias
 

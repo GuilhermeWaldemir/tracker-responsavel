@@ -1,0 +1,35 @@
+# Roda os testes automaticamente a cada envio de código e a cada pull request.
+name: Testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  testes:
+    # O app usa recursos do Windows (Registro, processos .exe), então os
+    # testes rodam no mesmo sistema em que ele é executado de verdade.
+    runs-on: windows-latest
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar o Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven # guarda as dependências entre execuções
+
+      - name: Rodar os testes
+        run: ./mvnw.cmd -B test
+
+      - name: Guardar o relatório quando algum teste falhar
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-dos-testes
+          path: target/surefire-reports/
