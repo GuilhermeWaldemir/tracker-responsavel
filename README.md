@@ -4,15 +4,9 @@
 
 App para Windows que fica rodando em segundo plano e, toda vez que você abre um jogo ou launcher (Steam, Epic Games...), pergunta se você já terminou suas responsabilidades — mostrando quantas horas você já jogou na semana.
 
-```
-┌─────────────────────────── Tracker Responsável ───────────────────────────┐
-│  Você abriu steam.exe.                                                    │
-│  Nesta semana você já jogou 7h 45min.                                     │
-│  Já terminou todas as suas responsabilidades? Vai jogar mesmo?            │
-│                                                                           │
-│          [ Vou jogar mesmo assim ]   [ Tem razão, fecha o jogo ]          │
-└───────────────────────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="docs/aviso.png" alt="Janela de aviso: 'Você abriu riotclientservices.exe. Nesta semana você já jogou 13h 54min. Já terminou todas as suas responsabilidades? Vai jogar mesmo?', com os botões 'Vou jogar mesmo assim' e 'Tem razão, fecha o jogo'" width="360">
+</p>
 
 ## Funcionalidades
 
